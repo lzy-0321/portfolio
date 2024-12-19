@@ -30,6 +30,14 @@ Added features and modifications:
   - Modular gallery component
   - Custom project cards
   - Coming soon section
+- 🎮 Steam integration:
+  - Real-time display of recently played Steam games
+  - Game cards showing playtime and tags
+  - Draggable carousel display
+  - Automatic game data caching and updates
+  - Responsive layout for different devices
+
+
 
 # Getting Started Locally
 
@@ -93,3 +101,25 @@ This project is licensed under the MIT License.
 - [magic ui](https://magicui.design/) for animations
 - [Tailwind CSS](https://tailwindcss.com/) for styling
 - [Next.js](https://nextjs.org/) for the framework
+
+## Steam Games Integration
+
+The website features a dynamic entertainment section that displays your recently played Steam games. To set this up:
+
+1. Get your Steam API credentials:
+   - Get your Steam API Key from: https://steamcommunity.com/dev/apikey
+   - Find your Steam ID using: https://steamid.io/
+
+2. Add the credentials to your `.env.local`:
+   ```plaintext
+   STEAM_API_KEY=your_steam_api_key
+   STEAM_ID=your_steam_id
+   ```
+
+3. The integration will:
+   - Display your recently played games
+   - Show game descriptions and playtime
+   - Auto-update based on your Steam activity
+   - Cache results to minimize API calls
+
+Note: Make sure your Steam profile's game details are set to public for this feature to work.
