@@ -1,5 +1,5 @@
-import { headers } from 'next/headers';
 import { updateCache } from './cache';
+import { GAME_TITLES } from '@/data/media';
 
 export interface ProcessedGame {
   id: string;
@@ -9,128 +9,145 @@ export interface ProcessedGame {
   description: string;
   playtime: number;
   tags: string[];
+  link: string;
+  rating?: {
+    summary: string;
+    total: number;
+    positive: number;
+    percentage: number;
+  };
 }
 
-const getSteamCredentials = () => {
-  const apiKey = process.env.STEAM_API_KEY;
-  const steamId = process.env.STEAM_ID;
-  
-  if (!apiKey || !steamId) {
-    throw new Error('Steam credentials not configured');
-  }
-  
-  return {
-    getRecentGamesUrl: () => 
-      `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${apiKey}&steamid=${steamId}&format=json`,
-    getGameDetailsUrl: (appId: number) => 
-      `http://store.steampowered.com/api/appdetails?appids=${appId}`,
-    getGameHeaderImage: (appId: number) => 
-      `https://cdn.cloudflare.steamstatic.com/steam/apps/${appId}/header.jpg`
-  };
+const DEFAULT_GAME: ProcessedGame = {
+  id: '',
+  title: 'Unknown Game',
+  category: 'Games',
+  image: '/placeholder-game.jpg',
+  description: 'No description available',
+  playtime: 0,
+  tags: [],
+  link: '',
 };
 
-interface SteamGame {
-  appid: number;
-  name: string;
-  playtime_2weeks: number;
-  playtime_forever: number;
-  img_icon_url: string;
-}
+// 根据好评率返回评价描述
+const getReviewSummary = (percentage: number): string => {
+  if (percentage >= 95) return "Overwhelmingly Positive";
+  if (percentage >= 80) return "Very Positive";
+  if (percentage >= 70) return "Mostly Positive";
+  if (percentage >= 40) return "Mixed";
+  if (percentage >= 20) return "Mostly Negative";
+  return "Very Negative";
+};
 
-export const getRecentGames = async (): Promise<ProcessedGame[]> => {
-  if (typeof window !== 'undefined') {
-    throw new Error('getRecentGames should only be called from server-side');
-  }
-
+async function fetchPlaytime(steamId: string): Promise<number> {
   try {
-    const steam = getSteamCredentials();
-    
-    const headersList = headers();
-    
-    const response = await fetch(steam.getRecentGamesUrl(), {
-      cache: 'no-store',
-      headers: {
-        'User-Agent': headersList.get('user-agent') || 'Server',
-      },
-    });
-    
+    const apiKey = process.env.STEAM_API_KEY;
+    const userId = process.env.STEAM_ID;
+
+    if (!apiKey || !userId) {
+      console.error('Steam credentials not configured');
+      return 0;
+    }
+
+    const response = await fetch(
+      `https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${apiKey}&steamid=${userId}&format=json`
+    );
+
     if (!response.ok) {
-      const text = await response.text();
-      console.error('Steam API error:', text);
-      throw new Error(`Failed to fetch Steam data: ${response.status} ${response.statusText}`);
+      throw new Error(`Steam API error: ${response.status}`);
     }
 
     const data = await response.json();
+    const games = data.response.games || [];
+    const game = games.find((g: any) => g.appid.toString() === steamId);
+    
+    // Convert minutes to hours and round to 1 decimal place
+    return game ? Math.round((game.playtime_forever / 60) * 10) / 10 : 0;
+  } catch (error) {
+    console.error(`Error fetching playtime for game ${steamId}:`, error);
+    return 0;
+  }
+}
 
-    if (!data.response || !data.response.games) {
-      console.error('No games found in response:', data);
-      return [];
+async function fetchGameDetails(steamId: string): Promise<ProcessedGame | null> {
+  try {
+    // 并行获取所有需要的数据
+    const [detailsResponse, reviewsResponse, playtime] = await Promise.all([
+      fetch(`https://store.steampowered.com/api/appdetails?appids=${steamId}`),
+      fetch(`https://store.steampowered.com/appreviews/${steamId}?json=1&language=all&purchase_type=all&num_per_page=0`),
+      fetchPlaytime(steamId)
+    ]);
+
+    if (!detailsResponse.ok || !reviewsResponse.ok) {
+      throw new Error(`Steam API error: ${detailsResponse.status} ${reviewsResponse.status}`);
     }
 
-    const games: SteamGame[] = data.response.games;
+    const [detailsData, reviewsData] = await Promise.all([
+      detailsResponse.json(),
+      reviewsResponse.json()
+    ]);
 
-    // 按照最近两周游玩时间排序并获取前10个
-    const topGames = games
-      .sort((a, b) => b.playtime_2weeks - a.playtime_2weeks)
-      .slice(0, 10);
+    const gameData = detailsData[steamId].data;
+    if (!gameData) {
+      return null;
+    }
 
-    // 获取每个游戏的详细信息
+    // 处理评价信息
+    const total = reviewsData?.query_summary?.total_reviews || 0;
+    const positive = reviewsData?.query_summary?.total_positive || 0;
+    const percentage = total > 0 ? Math.round((positive / total) * 100) : 0;
+
+    return {
+      id: steamId,
+      title: gameData.name,
+      category: 'Games',
+      image: gameData.header_image,
+      description: gameData.short_description,
+      playtime,  // 使用获取到的游戏时长
+      tags: gameData.genres?.map((genre: any) => genre.description) || [],
+      link: `https://store.steampowered.com/app/${steamId}`,
+      rating: {
+        summary: total > 0 ? getReviewSummary(percentage) : 'No Reviews',
+        total,
+        positive,
+        percentage
+      }
+    };
+  } catch (error) {
+    console.error(`Error fetching game ${steamId}:`, error);
+    return null;
+  }
+}
+
+export const getRecentGames = async (): Promise<ProcessedGame[]> => {
+  try {
     const processedGames = await Promise.all(
-      topGames.map(async (game) => {
-        try {
-          const detailsUrl = steam.getGameDetailsUrl(game.appid);
-          
-          const detailsResponse = await fetch(detailsUrl);
-          const details = await detailsResponse.json();
-          
-          if (!details[game.appid].success) {
-            console.error('Failed to fetch details for game:', game.appid);
-            return {
-              id: game.appid.toString(),
-              title: game.name,
-              category: "Games",
-              image: steam.getGameHeaderImage(game.appid),
-              description: "Game information unavailable",
-              playtime: Math.round(game.playtime_2weeks / 60),
-              tags: []
-            };
-          }
+      GAME_TITLES.map(async (game) => {
+        const result = await fetchGameDetails(game.steamId);
 
-          const gameDetails = details[game.appid].data;
-
+        if (!result) {
           return {
-            id: game.appid.toString(),
-            title: game.name,
-            category: "Games",
-            image: steam.getGameHeaderImage(game.appid),
-            description: gameDetails?.short_description || "No description available",
-            playtime: Math.round(game.playtime_2weeks / 60),
-            tags: gameDetails?.genres?.map((genre: any) => genre.description) || []
+            ...DEFAULT_GAME,
+            id: game.id,
+            title: game.title,
           };
-        } catch (error) {
-          console.error('Error processing game:', game.appid, error);
-          return null;
         }
+
+        return result;
       })
     );
 
-    const filteredGames = processedGames.filter((game): game is ProcessedGame => game !== null);
-    
-    // console.log('📦 Steam games fetched:', {
-    //   gamesCount: filteredGames.length,
-    //   games: filteredGames.map(g => ({
-    //     title: g.title,
-    //     playtime: g.playtime
-    //   }))
-    // });
-    
-    // 更新缓存
-    updateCache(filteredGames);
-    // console.log('💾 Cache updated with new games data');
-    
-    return filteredGames;
+    // Add delay to avoid rate limiting
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    updateCache(processedGames);
+    return processedGames;
   } catch (error) {
     console.error('❌ Error fetching Steam data:', error);
-    return [];
+    return GAME_TITLES.map(game => ({
+      ...DEFAULT_GAME,
+      id: game.id,
+      title: game.title,
+    }));
   }
 };

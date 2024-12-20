@@ -12,8 +12,12 @@ import Link from "next/link";
 import Markdown from "react-markdown";
 import { Gallery } from "@/components/gallery";
 import { EntertainmentCarousel } from "@/components/entertainment-carousel";
-import { getCachedGames, CACHE_EXPIRY } from '@/lib/cache';
 import { getRecentGames } from '@/lib/steam';
+import { getMoviesData } from '@/lib/tmdb';
+import { getCachedGames, getCachedMovies, CACHE_EXPIRY } from '@/lib/cache';
+import { getBooksData } from '@/lib/books';
+import { getCachedBooks } from '@/lib/cache';
+import { CityMap } from "@/components/city-map";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -75,34 +79,13 @@ const galleryImages = [
   }
 ];
 
-const movies = [
-  {
-    id: "1",
-    title: "Inception",
-    category: "Movies",
-    image: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg",
-    description: "A mind-bending journey through dreams within dreams.",
-    tags: ["Sci-Fi", "Action", "Thriller"]
-  }
-];
-
-const books = [
-  {
-    id: "1",
-    title: "Dune",
-    category: "Books",
-    image: "https://m.media-amazon.com/images/I/81ym3QUd3KL._AC_UF1000,1000_QL80_.jpg",
-    description: "A masterpiece of science fiction literature.",
-    tags: ["Sci-Fi", "Fantasy", "Classic"]
-  }
-];
-
 export default async function Page() {
-  const cached = getCachedGames();
+  // 获取游��数据
+  const cachedGames = getCachedGames();
   const now = Date.now();
   
-  let steamGames = cached.games;
-  if (steamGames.length === 0 || (now - cached.lastUpdate) > CACHE_EXPIRY) {
+  let steamGames = cachedGames?.data || [];
+  if (steamGames.length === 0 || (now - cachedGames.lastUpdate) > CACHE_EXPIRY) {
     console.log('Cache expired or empty, fetching new data...');
     steamGames = await getRecentGames();
   }
@@ -110,6 +93,22 @@ export default async function Page() {
   const games = steamGames.map(game => ({
     ...game,
   }));
+
+  // get movies from tmdb
+  const cachedMovies = getCachedMovies();
+  let movies = cachedMovies?.data || [];
+  if (movies.length === 0 || (now - cachedMovies.lastUpdate) > CACHE_EXPIRY) {
+    console.log('Movies cache expired or empty, fetching new data...');
+    movies = await getMoviesData();
+  }
+
+  // // get books from google books
+  // const cachedBooks = getCachedBooks();
+  // let books = cachedBooks?.data || [];
+  // if (books.length === 0 || (now - cachedBooks.lastUpdate) > CACHE_EXPIRY) {
+  //   console.log('Books cache expired or empty, fetching new data...');
+  //   books = await getBooksData();
+  // }
 
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
@@ -293,6 +292,32 @@ export default async function Page() {
             </div>
           </div>
         </section>
+
+        <section id="travel" className="w-full">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <BlurFade delay={BLUR_FADE_DELAY * 12}>
+              <div className="flex flex-col items-center justify-center space-y-4 text-center">
+                <div className="space-y-2">
+                  <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
+                    Travel
+                  </div>
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                    Places I've Been
+                  </h2>
+                  <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                    Exploring the world, one city at a time.
+                  </p>
+                </div>
+              </div>
+            </BlurFade>
+            
+            <div className="mt-8">
+              <BlurFade delay={BLUR_FADE_DELAY * 13}>
+                <CityMap />
+              </BlurFade>
+            </div>
+          </div>
+        </section>
         
         <section id="entertainment" className="space-y-12">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -314,16 +339,16 @@ export default async function Page() {
             
             <div className="mt-8 space-y-8">
               <BlurFade delay={BLUR_FADE_DELAY * 14}>
-                <EntertainmentCarousel items={games} category="Games I'm Playing" />
+                <EntertainmentCarousel items={games} category="Games" />
               </BlurFade>
               
               <BlurFade delay={BLUR_FADE_DELAY * 15}>
-                <EntertainmentCarousel items={movies} category="Movies & TV Shows" />
+                <EntertainmentCarousel items={movies} category="Movies & TV" />
               </BlurFade>
               
-              <BlurFade delay={BLUR_FADE_DELAY * 16}>
-                <EntertainmentCarousel items={books} category="Books I Read" />
-              </BlurFade>
+              {/* <BlurFade delay={BLUR_FADE_DELAY * 16}>
+                <EntertainmentCarousel items={books} category="Books" />
+              </BlurFade> */}
             </div>
           </div>
         </section>
@@ -355,6 +380,7 @@ export default async function Page() {
             </div>
           </div>
         </section>
+
       </div>
     </main>
   );

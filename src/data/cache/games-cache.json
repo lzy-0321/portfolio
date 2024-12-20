@@ -1,0 +1,180 @@
+{
+  "data": [
+    {
+      "id": "1172470",
+      "title": "Apex Legends™",
+      "category": "Games",
+      "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/header.jpg?t=1734541502",
+      "description": "Apex Legends is the award-winning, free-to-play Hero Shooter from Respawn Entertainment. Master an ever-growing roster of legendary characters with powerful abilities, and experience strategic squad play and innovative gameplay in the next evolution of Hero Shooter and Battle Royale.",
+      "playtime": 736,
+      "tags": [
+        "Action",
+        "Adventure",
+        "Free To Play"
+      ],
+      "link": "https://store.steampowered.com/app/1172470",
+      "rating": {
+        "summary": "Mixed",
+        "total": 970725,
+        "positive": 656200,
+        "percentage": 68
+      }
+    },
+    {
+      "id": "359550",
+      "title": "Tom Clancy's Rainbow Six® Siege",
+      "category": "Games",
+      "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/359550/header.jpg?t=1733419428",
+      "description": "Tom Clancy's Rainbow Six® Siege is an elite, tactical team-based shooter where superior planning and execution triumph.",
+      "playtime": 1025.3,
+      "tags": [
+        "Action"
+      ],
+      "link": "https://store.steampowered.com/app/359550",
+      "rating": {
+        "summary": "Very Positive",
+        "total": 1343512,
+        "positive": 1134878,
+        "percentage": 84
+      }
+    },
+    {
+      "id": "271590",
+      "title": "Grand Theft Auto V",
+      "category": "Games",
+      "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg?t=1726606628",
+      "description": "Grand Theft Auto V for PC offers players the option to explore the award-winning world of Los Santos and Blaine County in resolutions of up to 4k and beyond, as well as the chance to experience the game running at 60 frames per second.",
+      "playtime": 190,
+      "tags": [
+        "Action",
+        "Adventure"
+      ],
+      "link": "https://store.steampowered.com/app/271590",
+      "rating": {
+        "summary": "Very Positive",
+        "total": 1919603,
+        "positive": 1672111,
+        "percentage": 87
+      }
+    },
+    {
+      "id": "2358720",
+      "title": "Black Myth: Wukong",
+      "category": "Games",
+      "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/header.jpg?t=1734426465",
+      "description": "Black Myth: Wukong is an action RPG rooted in Chinese mythology. You shall set out as the Destined One to venture into the challenges and marvels ahead, to uncover the obscured truth beneath the veil of a glorious legend from the past.",
+      "playtime": 20.9,
+      "tags": [
+        "Action",
+        "Adventure",
+        "RPG"
+      ],
+      "link": "https://store.steampowered.com/app/2358720",
+      "rating": {
+        "summary": "Overwhelmingly Positive",
+        "total": 1065287,
+        "positive": 1028567,
+        "percentage": 97
+      }
+    },
+    {
+      "id": "1366540",
+      "title": "Dyson Sphere Program",
+      "category": "Games",
+      "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1366540/header.jpg?t=1730445887",
+      "description": "Build the most efficient intergalactic factory in space simulation strategy game Dyson Sphere Program! Harness the power of stars, collect resources, plan and design production lines and develop your interstellar factory from a small space workshop to a galaxy-wide industrial empire.",
+      "playtime": 135.8,
+      "tags": [
+        "Indie",
+        "Simulation",
+        "Strategy",
+        "Early Access"
+      ],
+      "link": "https://store.steampowered.com/app/1366540",
+      "rating": {
+        "summary": "Overwhelmingly Positive",
+        "total": 82883,
+        "positive": 80957,
+        "percentage": 98
+      }
+    },
+    {
+      "id": "105600",
+      "title": "Terraria",
+      "category": "Games",
+      "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/105600/header.jpg?t=1731252354",
+      "description": "Dig, fight, explore, build! Nothing is impossible in this action-packed adventure game. Four Pack also available!",
+      "playtime": 38.7,
+      "tags": [
+        "Action",
+        "Adventure",
+        "Indie",
+        "RPG"
+      ],
+      "link": "https://store.steampowered.com/app/105600",
+      "rating": {
+        "summary": "Overwhelmingly Positive",
+        "total": 1356235,
+        "positive": 1322536,
+        "percentage": 98
+      }
+    },
+    {
+      "id": "1091500",
+      "title": "Cyberpunk 2077",
+      "category": "Games",
+      "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/header_alt_assets_6.jpg?t=1734434803",
+      "description": "Cyberpunk 2077 is an open-world, action-adventure RPG set in the dark future of Night City — a dangerous megalopolis obsessed with power, glamor, and ceaseless body modification.",
+      "playtime": 179.1,
+      "tags": [
+        "RPG"
+      ],
+      "link": "https://store.steampowered.com/app/1091500",
+      "rating": {
+        "summary": "Very Positive",
+        "total": 785981,
+        "positive": 659537,
+        "percentage": 84
+      }
+    },
+    {
+      "id": "255710",
+      "title": "Cities: Skylines",
+      "category": "Games",
+      "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/255710/header.jpg?t=1734641631",
+      "description": "Cities: Skylines is a modern take on the classic city simulation. The game introduces new game play elements to realize the thrill and hardships of creating and maintaining a real city whilst expanding on some well-established tropes of the city building experience.",
+      "playtime": 71.5,
+      "tags": [
+        "Simulation",
+        "Strategy"
+      ],
+      "link": "https://store.steampowered.com/app/255710",
+      "rating": {
+        "summary": "Very Positive",
+        "total": 265912,
+        "positive": 248083,
+        "percentage": 93
+      }
+    },
+    {
+      "id": "394360",
+      "title": "Hearts of Iron IV",
+      "category": "Games",
+      "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/394360/header.jpg?t=1733820213",
+      "description": "Victory is at your fingertips! Your ability to lead your nation is your supreme weapon, the strategy game Hearts of Iron IV lets you take command of any nation in World War II; the most engaging conflict in world history.",
+      "playtime": 108.7,
+      "tags": [
+        "Simulation",
+        "Strategy"
+      ],
+      "link": "https://store.steampowered.com/app/394360",
+      "rating": {
+        "summary": "Very Positive",
+        "total": 317475,
+        "positive": 289065,
+        "percentage": 91
+      }
+    }
+  ],
+  "lastUpdate": 1734677684539
+}

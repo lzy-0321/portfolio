@@ -1,0 +1,200 @@
+{
+  "data": [
+    {
+      "id": "63639",
+      "title": "The Expanse",
+      "category": "TV Shows",
+      "image": "https://image.tmdb.org/t/p/w500/8djpxDeWpINnGhjpFXQjnBe6zbx.jpg",
+      "description": "A thriller set two hundred years in the future following the case of a missing young woman who brings a hardened detective and a rogue ship's captain together in a race across the solar system to expose the greatest conspiracy in human history.",
+      "tags": [
+        "TV Series"
+      ],
+      "year": "2015",
+      "rating": 8.065,
+      "link": "https://www.themoviedb.org/tv/63639"
+    },
+    {
+      "id": "1399",
+      "title": "Game of Thrones",
+      "category": "TV Shows",
+      "image": "https://image.tmdb.org/t/p/w500/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg",
+      "description": "Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond.",
+      "tags": [
+        "TV Series"
+      ],
+      "year": "2011",
+      "rating": 8.456,
+      "link": "https://www.themoviedb.org/tv/1399"
+    },
+    {
+      "id": "94997",
+      "title": "House of the Dragon",
+      "category": "TV Shows",
+      "image": "https://image.tmdb.org/t/p/w500/t9XkeE7HzOsdQcDDDapDYh8Rrmt.jpg",
+      "description": "The Targaryen dynasty is at the absolute apex of its power, with more than 15 dragons under their yoke. Most empires crumble from such heights. In the case of the Targaryens, their slow fall begins when King Viserys breaks with a century of tradition by naming his daughter Rhaenyra heir to the Iron Throne. But when Viserys later fathers a son, the court is shocked when Rhaenyra retains her status as his heir, and seeds of division sow friction across the realm.",
+      "tags": [
+        "TV Series"
+      ],
+      "year": "2022",
+      "rating": 8.4,
+      "link": "https://www.themoviedb.org/tv/94997"
+    },
+    {
+      "id": "1425",
+      "title": "House of Cards",
+      "category": "TV Shows",
+      "image": "https://image.tmdb.org/t/p/w500/hKWxWjFwnMvkWQawbhvC0Y7ygQ8.jpg",
+      "description": "Set in present day Washington, D.C., House of Cards is the story of Frank Underwood, a ruthless and cunning politician, and his wife Claire who will stop at nothing to conquer everything. This wicked political drama penetrates the shadowy world of greed, sex and corruption in modern D.C.",
+      "tags": [
+        "TV Series"
+      ],
+      "year": "2013",
+      "rating": 8.02,
+      "link": "https://www.themoviedb.org/tv/1425"
+    },
+    {
+      "id": "68726",
+      "title": "Pacific Rim",
+      "category": "Movies",
+      "image": "https://image.tmdb.org/t/p/w500/mmznhaQDwlHWpUwKuNxtQiubbmM.jpg",
+      "description": "Using massive piloted robots to combat the alien threat, earth's survivors take the fight to the invading alien force lurking in the depths of the Pacific Ocean. Nearly defenseless in the face of the relentless enemy, the forces of mankind have no choice but to turn to two unlikely heroes who now stand as earth's final hope against the mounting apocalypse.",
+      "tags": [
+        "Movie"
+      ],
+      "year": "2013",
+      "rating": 6.904,
+      "link": "https://www.themoviedb.org/movie/68726"
+    },
+    {
+      "id": "49026",
+      "title": "The Dark Knight Rises",
+      "category": "Movies",
+      "image": "https://image.tmdb.org/t/p/w500/hr0L2aueqlP2BYUblTTjmtn0hw4.jpg",
+      "description": "Following the death of District Attorney Harvey Dent, Batman assumes responsibility for Dent's crimes to protect the late attorney's reputation and is subsequently hunted by the Gotham City Police Department. Eight years later, Batman encounters the mysterious Selina Kyle and the villainous Bane, a new terrorist leader who overwhelms Gotham's finest. The Dark Knight resurfaces to protect a city that has branded him an enemy.",
+      "tags": [
+        "Movie"
+      ],
+      "year": "2012",
+      "rating": 7.8,
+      "link": "https://www.themoviedb.org/movie/49026"
+    },
+    {
+      "id": "27205",
+      "title": "Inception",
+      "category": "Movies",
+      "image": "https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
+      "description": "Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible: \"inception\", the implantation of another person's idea into a target's subconscious.",
+      "tags": [
+        "Movie"
+      ],
+      "year": "2010",
+      "rating": 8.4,
+      "link": "https://www.themoviedb.org/movie/27205"
+    },
+    {
+      "id": "60574",
+      "title": "Peaky Blinders",
+      "category": "TV Shows",
+      "image": "https://image.tmdb.org/t/p/w500/vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg",
+      "description": "A gangster family epic set in 1919 Birmingham, England and centered on a gang who sew razor blades in the peaks of their caps, and their fierce boss Tommy Shelby, who means to move up in the world.",
+      "tags": [
+        "TV Series"
+      ],
+      "year": "2013",
+      "rating": 8.5,
+      "link": "https://www.themoviedb.org/tv/60574"
+    },
+    {
+      "id": "438631",
+      "title": "Dune",
+      "category": "Movies",
+      "image": "https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
+      "description": "Paul Atreides, a brilliant and gifted young man born into a great destiny beyond his understanding, must travel to the most dangerous planet in the universe to ensure the future of his family and his people. As malevolent forces explode into conflict over the planet's exclusive supply of the most precious resource in existence-a commodity capable of unlocking humanity's greatest potential-only those who can conquer their fear will survive.",
+      "tags": [
+        "Movie"
+      ],
+      "year": "2021",
+      "rating": 7.783,
+      "link": "https://www.themoviedb.org/movie/438631"
+    },
+    {
+      "id": "34307",
+      "title": "Shameless",
+      "category": "TV Shows",
+      "image": "https://image.tmdb.org/t/p/w500/9akij7PqZ1g6zl42DQQTtL9CTSb.jpg",
+      "description": "Chicagoan Frank Gallagher is the proud single dad of six smart, industrious, independent kids, who without him would be... perhaps better off. When Frank's not at the bar spending what little money they have, he's passed out on the floor. But the kids have found ways to grow up in spite of him. They may not be like any family you know, but they make no apologies for being exactly who they are.",
+      "tags": [
+        "TV Series"
+      ],
+      "year": "2011",
+      "rating": 8.161,
+      "link": "https://www.themoviedb.org/tv/34307"
+    },
+    {
+      "id": "81356",
+      "title": "Sex Education",
+      "category": "TV Shows",
+      "image": "https://image.tmdb.org/t/p/w500/cK6JhcZFpwVW9tldz3llodY2TeY.jpg",
+      "description": "Inexperienced Otis channels his sex therapist mom when he teams up with rebellious Maeve to set up an underground sex therapy clinic at school.",
+      "tags": [
+        "TV Series"
+      ],
+      "year": "2019",
+      "rating": 8.25,
+      "link": "https://www.themoviedb.org/tv/81356"
+    },
+    {
+      "id": "93740",
+      "title": "Foundation",
+      "category": "TV Shows",
+      "image": "https://image.tmdb.org/t/p/w500/1AZERr7KEJBpcchQ6vFcbUUC0Zw.jpg",
+      "description": "Follow a band of exiles on their monumental journey to save humanity and rebuild civilization amid the fall of the Galactic Empire.",
+      "tags": [
+        "TV Series"
+      ],
+      "year": "2021",
+      "rating": 7.803,
+      "link": "https://www.themoviedb.org/tv/93740"
+    },
+    {
+      "id": "19885",
+      "title": "Sherlock",
+      "category": "TV Shows",
+      "image": "https://image.tmdb.org/t/p/w500/7WTsnHkbA0FaG6R9twfFde0I9hl.jpg",
+      "description": "A modern update finds the famous sleuth and his doctor partner solving crime in 21st century London.",
+      "tags": [
+        "TV Series"
+      ],
+      "year": "2010",
+      "rating": 8.519,
+      "link": "https://www.themoviedb.org/tv/19885"
+    },
+    {
+      "id": "63247",
+      "title": "Westworld",
+      "category": "TV Shows",
+      "image": "https://image.tmdb.org/t/p/w500/8MfgyFHf7XEboZJPZXCIDqqiz6e.jpg",
+      "description": "A dark odyssey about the dawn of artificial consciousness and the evolution of sin. Set at the intersection of the near future and the reimagined past, it explores a world in which every human appetite, no matter how noble or depraved, can be indulged.",
+      "tags": [
+        "TV Series"
+      ],
+      "year": "2016",
+      "rating": 8.046,
+      "link": "https://www.themoviedb.org/tv/63247"
+    },
+    {
+      "id": "73586",
+      "title": "Yellowstone",
+      "category": "TV Shows",
+      "image": "https://image.tmdb.org/t/p/w500/s4QRRYc1V2e68Qy9Wel9MI8fhRP.jpg",
+      "description": "Follow the violent world of the Dutton family, who controls the largest contiguous ranch in the United States. Led by their patriarch John Dutton, the family defends their property against constant attack by land developers, an Indian reservation, and America’s first National Park.",
+      "tags": [
+        "TV Series"
+      ],
+      "year": "2018",
+      "rating": 8.244,
+      "link": "https://www.themoviedb.org/tv/73586"
+    }
+  ],
+  "lastUpdate": 1734677889726
+}

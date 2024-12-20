@@ -2,6 +2,11 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useAnimation, PanInfo } from "framer-motion";
+import { MovieCard } from "./movie-card";
+import { GameCard } from "./game-card";
+import { ProcessedMovie } from "@/lib/tmdb";
+import { ProcessedBook } from "@/lib/books";
+import { BookCard } from "./book-card";
 
 interface EntertainmentItem {
   id: string;
@@ -11,6 +16,7 @@ interface EntertainmentItem {
   description: string;
   playtime?: number;
   tags?: string[];
+  link: string;
 }
 
 interface EntertainmentCarouselProps {
@@ -20,8 +26,10 @@ interface EntertainmentCarouselProps {
 
 export function EntertainmentCarousel({ items, category }: EntertainmentCarouselProps) {
   const [position, setPosition] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
+  const dragStartTime = useRef<number>(0);
 
   const CARD_WIDTH = 320;
   const GAP = 20;
@@ -37,6 +45,8 @@ export function EntertainmentCarousel({ items, category }: EntertainmentCarousel
   }, [items.length, ITEM_FULL_WIDTH]);
 
   const handleDragStart = () => {
+    setIsDragging(true);
+    dragStartTime.current = Date.now();
     controls.set({ x: position });
   };
 
@@ -60,26 +70,39 @@ export function EntertainmentCarousel({ items, category }: EntertainmentCarousel
   };
 
   const handleDragEnd = (event: any, info: PanInfo) => {
-    const velocity = info.velocity.x;
-    let finalPosition = position;
-
-    // 添加一些动量效果
-    if (Math.abs(velocity) > 100) {
-      finalPosition += Math.sign(velocity) * ITEM_FULL_WIDTH;
-    }
-
-    // 对齐到最近的卡片位置
-    const targetPosition = Math.round(finalPosition / ITEM_FULL_WIDTH) * ITEM_FULL_WIDTH;
+    const dragEndTime = Date.now();
+    const dragDuration = dragEndTime - dragStartTime.current;
     
-    setPosition(targetPosition);
-    controls.start({
-      x: targetPosition,
-      transition: {
-        type: "spring",
-        damping: 30,
-        stiffness: 200
+    // 如果拖动时间超过200ms或移动距离超过5px，则视为拖动而不是点击
+    const isDragGesture = dragDuration > 200 || Math.abs(info.offset.x) > 5;
+    
+    if (isDragGesture) {
+      const velocity = info.velocity.x;
+      let finalPosition = position;
+
+      // 添加一些动量效果
+      if (Math.abs(velocity) > 100) {
+        finalPosition += Math.sign(velocity) * ITEM_FULL_WIDTH;
       }
-    });
+
+      // 对齐到最近的卡片位置
+      const targetPosition = Math.round(finalPosition / ITEM_FULL_WIDTH) * ITEM_FULL_WIDTH;
+      
+      setPosition(targetPosition);
+      controls.start({
+        x: targetPosition,
+        transition: {
+          type: "spring",
+          damping: 30,
+          stiffness: 200
+        }
+      });
+    }
+    
+    // 重置拖动状态
+    setTimeout(() => {
+      setIsDragging(false);
+    }, 0);
   };
 
   return (
@@ -106,45 +129,27 @@ export function EntertainmentCarousel({ items, category }: EntertainmentCarousel
             onDragEnd={handleDragEnd}
             animate={controls}
             style={{ 
-              cursor: "grab",
+              cursor: isDragging ? "grabbing" : "grab",
               touchAction: "none"
             }}
           >
             {extendedItems.map((item, index) => (
               <motion.div
                 key={`${item.id}-${index}`}
-                className="flex-none w-[300px] rounded-xl overflow-hidden bg-card shadow-lg hover:shadow-xl transition-shadow"
+                className="flex-none w-[300px]"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                style={{
+                  pointerEvents: isDragging ? "none" : "auto"
+                }}
               >
-                <div className="relative aspect-[16/9]">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-4 space-y-2">
-                  <h4 className="font-semibold">{item.title}</h4>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
-                  {item.playtime && (
-                    <p className="text-sm font-medium">
-                      Played {item.playtime} hours in last 2 weeks
-                    </p>
-                  )}
-                  {item.tags && (
-                    <div className="flex flex-wrap gap-2">
-                      {item.tags.map(tag => (
-                        <span
-                          key={tag}
-                          className="px-2 py-1 text-xs rounded-full bg-muted"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                {item.category === "Books" ? (
+                  <BookCard book={item as ProcessedBook} />
+                ) : item.category === "Movies" || item.category === "TV Shows" ? (
+                  <MovieCard movie={item as ProcessedMovie} />
+                ) : (
+                  <GameCard game={item} />
+                )}
               </motion.div>
             ))}
           </motion.div>
