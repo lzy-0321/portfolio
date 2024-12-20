@@ -1,4 +1,6 @@
-import { HackathonCard } from "@/components/hackathon-card";
+export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
+
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
@@ -10,6 +12,7 @@ import Link from "next/link";
 import Markdown from "react-markdown";
 import { Gallery } from "@/components/gallery";
 import { EntertainmentCarousel } from "@/components/entertainment-carousel";
+import { getCachedGames, CACHE_EXPIRY } from '@/lib/cache';
 import { getRecentGames } from '@/lib/steam';
 
 const BLUR_FADE_DELAY = 0.04;
@@ -95,12 +98,17 @@ const books = [
 ];
 
 export default async function Page() {
-  const steamGames = await getRecentGames();
+  const cached = getCachedGames();
+  const now = Date.now();
   
-  // 转换为娱乐卡片格式
+  let steamGames = cached.games;
+  if (steamGames.length === 0 || (now - cached.lastUpdate) > CACHE_EXPIRY) {
+    console.log('Cache expired or empty, fetching new data...');
+    steamGames = await getRecentGames();
+  }
+
   const games = steamGames.map(game => ({
     ...game,
-    description: `${game.description}\nPlayed ${game.playtime} hours in last 2 weeks`
   }));
 
   return (

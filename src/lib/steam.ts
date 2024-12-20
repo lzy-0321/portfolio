@@ -1,6 +1,7 @@
-import { cache } from 'react';
+import { headers } from 'next/headers';
+import { updateCache } from './cache';
 
-interface ProcessedGame {
+export interface ProcessedGame {
   id: string;
   title: string;
   category: string;
@@ -10,38 +11,23 @@ interface ProcessedGame {
   tags: string[];
 }
 
-interface CachedGames {
-  games: ProcessedGame[];
-  timestamp: number;
-}
-
-const CACHE_KEY = 'steam-games';
-const CACHE_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-
-const storage = {
-  get: async (key: string) => {
-    try {
-      if (typeof window === 'undefined') return null;
-      const item = localStorage.getItem(key);
-      return item ? JSON.parse(item) : null;
-    } catch {
-      return null;
-    }
-  },
-  set: async (key: string, value: any) => {
-    try {
-      if (typeof window === 'undefined') return;
-      localStorage.setItem(key, JSON.stringify(value));
-    } catch {
-      // 忽略存储错误
-    }
+const getSteamCredentials = () => {
+  const apiKey = process.env.STEAM_API_KEY;
+  const steamId = process.env.STEAM_ID;
+  
+  if (!apiKey || !steamId) {
+    throw new Error('Steam credentials not configured');
   }
+  
+  return {
+    getRecentGamesUrl: () => 
+      `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${apiKey}&steamid=${steamId}&format=json`,
+    getGameDetailsUrl: (appId: number) => 
+      `http://store.steampowered.com/api/appdetails?appids=${appId}`,
+    getGameHeaderImage: (appId: number) => 
+      `https://cdn.cloudflare.steamstatic.com/steam/apps/${appId}/header.jpg`
+  };
 };
-
-const STEAM_API_KEY = process.env.STEAM_API_KEY;
-const STEAM_ID = process.env.STEAM_ID;
 
 interface SteamGame {
   appid: number;
@@ -51,16 +37,22 @@ interface SteamGame {
   img_icon_url: string;
 }
 
-export const getRecentGames = cache(async (): Promise<ProcessedGame[]> => {
-  if (!STEAM_API_KEY || !STEAM_ID) {
-    console.error('Steam credentials not found:', { STEAM_API_KEY, STEAM_ID });
-    return [];
+export const getRecentGames = async (): Promise<ProcessedGame[]> => {
+  if (typeof window !== 'undefined') {
+    throw new Error('getRecentGames should only be called from server-side');
   }
 
   try {
-    const recentGamesUrl = `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${STEAM_API_KEY}&steamid=${STEAM_ID}&format=json`;
+    const steam = getSteamCredentials();
     
-    const response = await fetch(recentGamesUrl);
+    const headersList = headers();
+    
+    const response = await fetch(steam.getRecentGamesUrl(), {
+      cache: 'no-store',
+      headers: {
+        'User-Agent': headersList.get('user-agent') || 'Server',
+      },
+    });
     
     if (!response.ok) {
       const text = await response.text();
@@ -86,7 +78,7 @@ export const getRecentGames = cache(async (): Promise<ProcessedGame[]> => {
     const processedGames = await Promise.all(
       topGames.map(async (game) => {
         try {
-          const detailsUrl = `http://store.steampowered.com/api/appdetails?appids=${game.appid}`;
+          const detailsUrl = steam.getGameDetailsUrl(game.appid);
           
           const detailsResponse = await fetch(detailsUrl);
           const details = await detailsResponse.json();
@@ -97,7 +89,7 @@ export const getRecentGames = cache(async (): Promise<ProcessedGame[]> => {
               id: game.appid.toString(),
               title: game.name,
               category: "Games",
-              image: `https://cdn.cloudflare.steamstatic.com/steam/apps/${game.appid}/header.jpg`,
+              image: steam.getGameHeaderImage(game.appid),
               description: "Game information unavailable",
               playtime: Math.round(game.playtime_2weeks / 60),
               tags: []
@@ -110,7 +102,7 @@ export const getRecentGames = cache(async (): Promise<ProcessedGame[]> => {
             id: game.appid.toString(),
             title: game.name,
             category: "Games",
-            image: `https://cdn.cloudflare.steamstatic.com/steam/apps/${game.appid}/header.jpg`,
+            image: steam.getGameHeaderImage(game.appid),
             description: gameDetails?.short_description || "No description available",
             playtime: Math.round(game.playtime_2weeks / 60),
             tags: gameDetails?.genres?.map((genre: any) => genre.description) || []
@@ -122,9 +114,23 @@ export const getRecentGames = cache(async (): Promise<ProcessedGame[]> => {
       })
     );
 
-    return processedGames.filter((game): game is ProcessedGame => game !== null);
+    const filteredGames = processedGames.filter((game): game is ProcessedGame => game !== null);
+    
+    // console.log('📦 Steam games fetched:', {
+    //   gamesCount: filteredGames.length,
+    //   games: filteredGames.map(g => ({
+    //     title: g.title,
+    //     playtime: g.playtime
+    //   }))
+    // });
+    
+    // 更新缓存
+    updateCache(filteredGames);
+    // console.log('💾 Cache updated with new games data');
+    
+    return filteredGames;
   } catch (error) {
-    console.error('Error fetching Steam data:', error);
+    console.error('❌ Error fetching Steam data:', error);
     return [];
   }
-});
+};

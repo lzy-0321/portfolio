@@ -123,3 +123,32 @@ The website features a dynamic entertainment section that displays your recently
    - Cache results to minimize API calls
 
 Note: Make sure your Steam profile's game details are set to public for this feature to work.
+
+## Security Enhancements
+
+The Steam games integration has been enhanced with several security measures:
+
+1. Server-Side Only API Calls
+   - All Steam API calls are restricted to server-side execution
+   - Client-side API calls are prevented with runtime checks
+   - Uses Next.js server components for secure data fetching
+
+2. Data Caching System
+   - Implements a secure file-based caching mechanism
+   - Cache expiry set to 1 hour by default
+   - Reduces API call frequency and potential abuse
+   - Cache updates handled exclusively on server side
+
+3. Environment Variables
+   ```plaintext
+   STEAM_API_KEY=your_steam_api_key    # Required for Steam API access
+   STEAM_ID=your_steam_id              # Your Steam account ID
+   ```
+
+4. Best Practices
+   - API credentials are never exposed to the client
+   - Uses proper HTTP headers for API requests
+   - Implements error handling and logging
+   - Cache directory is properly secured
+
+Note: Make sure to keep your API keys and credentials secure and never commit them to version control.
