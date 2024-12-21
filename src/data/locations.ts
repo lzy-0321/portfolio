@@ -58,7 +58,7 @@ export const CURRENT_LOCATION: {
 
 // 地图配置
 export const MAP_CONFIG = {
-  center: [77.5484, -6.1987] as [number, number],
+  center: [115.7184, 0.0407] as [number, number],
   zoom: 2,
   maxZoom: 5,
   minZoom: 2
