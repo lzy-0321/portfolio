@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon, BookOpenIcon } from "lucide-react";
+import { HomeIcon, NotebookIcon, BookOpenIcon, CodeIcon } from "lucide-react";
 import type { Course } from "@/types/course";
 
 export const DATA = {
@@ -24,6 +24,7 @@ export const DATA = {
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
+    { href: "/projects", icon: CodeIcon, label: "Projects" },
     { href: "/notes", icon: BookOpenIcon, label: "Notes" },
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
@@ -101,66 +102,76 @@ export const DATA = {
   ],
   projects: [
     {
-      title: "Chat Collect",
-      href: "https://chatcollect.com",
-      dates: "Jan 2024 - Feb 2024",
+      title: "To Draw Is Human",
+      href: "https://github.com/lzy-0321/No-Code-Subgraph-Search",
+      dates: "2024 - Present",
       active: true,
-      description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+      description: "A no-code graph database interaction tool that allows users to search subgraphs through drawing. Built with Neo4j, React, and Python.",
       technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
+        "React",
+        "Python",
+        "Neo4j",
+        "FastAPI",
         "TailwindCSS",
-        "Stripe",
-        "Shadcn UI",
-        "Magic UI",
+        "Docker"
       ],
       links: [
-        {
-          type: "Website",
-          href: "https://chatcollect.com",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "",
-      video:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
-    },
-    {
-      title: "Magic UI",
-      href: "https://magicui.design",
-      dates: "June 2023 - Present",
-      active: true,
-      description:
-        "Designed, developed and sold animated UI components for developers.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Stripe",
-        "Shadcn UI",
-        "Magic UI",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://magicui.design",
-          icon: <Icons.globe className="size-3" />,
-        },
         {
           type: "Source",
-          href: "https://github.com/magicuidesign/magicui",
+          href: "https://github.com/lzy-0321/No-Code-Subgraph-Search",
           icon: <Icons.github className="size-3" />,
-        },
+        }
       ],
       image: "",
-      video: "https://cdn.magicui.design/bento-grid.mp4",
+      video: ""
     },
-  ],
+    {
+      title: "Portfolio",
+      href: "https://github.com/lzy-0321/portfolio",
+      dates: "2024 - Present",
+      active: true,
+      description: "My personal website built with Next.js, featuring course notes, projects showcase, and entertainment integration.",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "TailwindCSS",
+        "Shadcn UI",
+        "Magic UI"
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/lzy-0321/portfolio",
+          icon: <Icons.github className="size-3" />,
+        }
+      ],
+      image: "",
+      video: ""
+    },
+    {
+      title: "Course Projects",
+      href: "https://github.com/lzy-0321",
+      dates: "2021 - Present",
+      active: true,
+      description: "A collection of academic projects from various courses at UNSW, including operating systems, computer networks, and more.",
+      technologies: [
+        "C",
+        "Java",
+        "Python",
+        "VHDL",
+        "Assembly"
+      ],
+      links: [
+        {
+          type: "Source",
+          href: "https://github.com/lzy-0321",
+          icon: <Icons.github className="size-3" />,
+        }
+      ],
+      image: "",
+      video: ""
+    }
+  ] as const,
   courses: [
     {
       code: "COMP4920",

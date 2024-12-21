@@ -80,7 +80,7 @@ const galleryImages = [
 ];
 
 export default async function Page() {
-  // 获取游��数据
+  // 获取游戏数据
   const cachedGames = getCachedGames();
   const now = Date.now();
   
@@ -251,14 +251,13 @@ export default async function Page() {
                 </div>
               </BlurFade>
               <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 max-w-[1200px] mx-auto">
-                {DATA.projects.map((project, id) => (
+                {DATA.projects.slice(0, 2).map((project, id) => (
                   <BlurFade
                     key={project.title}
                     delay={BLUR_FADE_DELAY * 12 + id * 0.05}
                   >
                     <ProjectCard
                       href={project.href}
-                      key={project.title}
                       title={project.title}
                       description={project.description}
                       dates={project.dates}
