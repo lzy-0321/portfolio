@@ -17,6 +17,12 @@ Original features:
 - Optimized for Next.js and Vercel
 
 Added features and modifications:
+- 📸 Course Notes Integration:
+  - Organized course catalog with descriptions
+  - Course type categorization with colored tags
+  - Direct links to GitHub repositories
+  - Animated transitions and hover effects
+  - Responsive grid layout
 - 📸 Enhanced image gallery with:
   - Hover effects and descriptions
   - Responsive masonry layout
@@ -50,14 +56,16 @@ src/
 │   ├── movie-card.tsx          # Movie card component
 │   └── magicui/                # Animation components
 ├── app/
-│   └── page.tsx                # Main layout
+│   ├── page.tsx                # Main layout
+│   └── notes/                  # Notes section
+│       └── page.tsx            # Course catalog page
 ├── data/
 │   ├── resume.ts               # Basic configuration
 │   ├── locations.ts            # Map location data
-│   ├── media.ts               # Entertainment media data
-│   └── cache/                 # Cache directory
-│       ├── games-cache.json   # Steam games cache
-│       └── movies-cache.json  # TMDB movies cache
+│   ├── media.ts                # Entertainment media data
+│   └── cache/                  # Cache directory
+├── types/
+│   └── course.ts               # Course type definitions
 └── lib/
     ├── steam.ts               # Steam API integration
     ├── tmdb.ts               # TMDB API integration
@@ -69,7 +77,7 @@ src/
 
 1. Clone and install:
 ```bash
-git clone https://github.com/yourusername/portfolio
+git clone https://github.com/lzy-0321/portfolio
 cd portfolio
 pnpm install
 ```
@@ -213,6 +221,33 @@ interface CacheData<T> {
 - Input validation
 - Secure HTTP headers
 - Error boundaries
+
+## Course Notes Configuration
+
+1. Edit the courses data in `src/data/resume.tsx`:
+```typescript
+courses: [
+  {
+    code: "COMP3211",           // Course code
+    name: "Computer Architecture", // Course name
+    university: "University of new south wales",
+    description: "Course description...",
+    type: ["Systems", "Hardware"], // Course categories
+    link: "https://github.com/..." // Optional GitHub link
+  }
+]
+```
+
+2. Available course types:
+- AI
+- Database
+- Systems
+- Networks
+- Programming
+- Hardware
+- Design
+- Theory
+- Software Engineering
 
 # License & Acknowledgments
 

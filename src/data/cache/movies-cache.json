@@ -23,7 +23,7 @@
         "TV Series"
       ],
       "year": "2011",
-      "rating": 8.456,
+      "rating": 8.5,
       "link": "https://www.themoviedb.org/tv/1399"
     },
     {
@@ -36,7 +36,7 @@
         "TV Series"
       ],
       "year": "2022",
-      "rating": 8.4,
+      "rating": 8.37,
       "link": "https://www.themoviedb.org/tv/94997"
     },
     {
@@ -62,7 +62,7 @@
         "Movie"
       ],
       "year": "2013",
-      "rating": 6.904,
+      "rating": 6.9,
       "link": "https://www.themoviedb.org/movie/68726"
     },
     {
@@ -75,7 +75,7 @@
         "Movie"
       ],
       "year": "2012",
-      "rating": 7.8,
+      "rating": 7.782,
       "link": "https://www.themoviedb.org/movie/49026"
     },
     {
@@ -88,7 +88,7 @@
         "Movie"
       ],
       "year": "2010",
-      "rating": 8.4,
+      "rating": 8.369,
       "link": "https://www.themoviedb.org/movie/27205"
     },
     {
@@ -114,7 +114,7 @@
         "Movie"
       ],
       "year": "2021",
-      "rating": 7.783,
+      "rating": 7.8,
       "link": "https://www.themoviedb.org/movie/438631"
     },
     {
@@ -127,20 +127,20 @@
         "TV Series"
       ],
       "year": "2011",
-      "rating": 8.161,
+      "rating": 8.2,
       "link": "https://www.themoviedb.org/tv/34307"
     },
     {
       "id": "81356",
       "title": "Sex Education",
       "category": "TV Shows",
-      "image": "https://image.tmdb.org/t/p/w500/cK6JhcZFpwVW9tldz3llodY2TeY.jpg",
+      "image": "https://image.tmdb.org/t/p/w500/4Bph0hhnDH6dpc0SZIV522bLm4P.jpg",
       "description": "Inexperienced Otis channels his sex therapist mom when he teams up with rebellious Maeve to set up an underground sex therapy clinic at school.",
       "tags": [
         "TV Series"
       ],
       "year": "2019",
-      "rating": 8.25,
+      "rating": 8.2,
       "link": "https://www.themoviedb.org/tv/81356"
     },
     {
@@ -166,7 +166,7 @@
         "TV Series"
       ],
       "year": "2010",
-      "rating": 8.519,
+      "rating": 8.518,
       "link": "https://www.themoviedb.org/tv/19885"
     },
     {
@@ -179,7 +179,7 @@
         "TV Series"
       ],
       "year": "2016",
-      "rating": 8.046,
+      "rating": 8,
       "link": "https://www.themoviedb.org/tv/63247"
     },
     {
@@ -196,5 +196,5 @@
       "link": "https://www.themoviedb.org/tv/73586"
     }
   ],
-  "lastUpdate": 1734677889726
+  "lastUpdate": 1734753059659
 }

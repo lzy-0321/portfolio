@@ -6,7 +6,7 @@
       "category": "Games",
       "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/header.jpg?t=1734541502",
       "description": "Apex Legends is the award-winning, free-to-play Hero Shooter from Respawn Entertainment. Master an ever-growing roster of legendary characters with powerful abilities, and experience strategic squad play and innovative gameplay in the next evolution of Hero Shooter and Battle Royale.",
-      "playtime": 736,
+      "playtime": 739.2,
       "tags": [
         "Action",
         "Adventure",
@@ -15,8 +15,8 @@
       "link": "https://store.steampowered.com/app/1172470",
       "rating": {
         "summary": "Mixed",
-        "total": 970725,
-        "positive": 656200,
+        "total": 970813,
+        "positive": 656232,
         "percentage": 68
       }
     },
@@ -33,8 +33,8 @@
       "link": "https://store.steampowered.com/app/359550",
       "rating": {
         "summary": "Very Positive",
-        "total": 1343512,
-        "positive": 1134878,
+        "total": 1343687,
+        "positive": 1134990,
         "percentage": 84
       }
     },
@@ -42,7 +42,7 @@
       "id": "271590",
       "title": "Grand Theft Auto V",
       "category": "Games",
-      "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg?t=1726606628",
+      "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg?t=1734720459",
       "description": "Grand Theft Auto V for PC offers players the option to explore the award-winning world of Los Santos and Blaine County in resolutions of up to 4k and beyond, as well as the chance to experience the game running at 60 frames per second.",
       "playtime": 190,
       "tags": [
@@ -52,8 +52,8 @@
       "link": "https://store.steampowered.com/app/271590",
       "rating": {
         "summary": "Very Positive",
-        "total": 1919603,
-        "positive": 1672111,
+        "total": 1920102,
+        "positive": 1672589,
         "percentage": 87
       }
     },
@@ -72,8 +72,8 @@
       "link": "https://store.steampowered.com/app/2358720",
       "rating": {
         "summary": "Overwhelmingly Positive",
-        "total": 1065287,
-        "positive": 1028567,
+        "total": 1066009,
+        "positive": 1029259,
         "percentage": 97
       }
     },
@@ -93,8 +93,8 @@
       "link": "https://store.steampowered.com/app/1366540",
       "rating": {
         "summary": "Overwhelmingly Positive",
-        "total": 82883,
-        "positive": 80957,
+        "total": 82892,
+        "positive": 80966,
         "percentage": 98
       }
     },
@@ -114,8 +114,8 @@
       "link": "https://store.steampowered.com/app/105600",
       "rating": {
         "summary": "Overwhelmingly Positive",
-        "total": 1356235,
-        "positive": 1322536,
+        "total": 1356557,
+        "positive": 1322846,
         "percentage": 98
       }
     },
@@ -132,8 +132,8 @@
       "link": "https://store.steampowered.com/app/1091500",
       "rating": {
         "summary": "Very Positive",
-        "total": 785981,
-        "positive": 659537,
+        "total": 786328,
+        "positive": 659874,
         "percentage": 84
       }
     },
@@ -151,8 +151,8 @@
       "link": "https://store.steampowered.com/app/255710",
       "rating": {
         "summary": "Very Positive",
-        "total": 265912,
-        "positive": 248083,
+        "total": 265952,
+        "positive": 248122,
         "percentage": 93
       }
     },
@@ -170,11 +170,11 @@
       "link": "https://store.steampowered.com/app/394360",
       "rating": {
         "summary": "Very Positive",
-        "total": 317475,
-        "positive": 289065,
+        "total": 317597,
+        "positive": 289179,
         "percentage": 91
       }
     }
   ],
-  "lastUpdate": 1734677684539
+  "lastUpdate": 1734753058832
 }

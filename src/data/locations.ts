@@ -31,8 +31,9 @@ export const VISITED_LOCATIONS: Location[] = [
   { coordinates: [117.1205, 36.6510], weight: 0.4 },  // 济南
   { coordinates: [118.0894, 24.4798], weight: 0.4 },  // 厦门
   { coordinates: [110.3493, 19.0320], weight: 0.4 },  // 海南
-  { coordinates: [103.8198, 1.3521], weight: 0.4 },   // 新加坡
+  { coordinates: [112.9823, 28.1941], weight: 0.4 },  // 长沙
   { coordinates: [120.3551, 36.0829], weight: 0.4 },  // 青岛
+  { coordinates: [103.8198, 1.3521], weight: 0.4 },   // 新加坡
   //australia
   //nsw
   { coordinates: [150.8931, -34.4250], weight: 0.4 },  // wollongong
@@ -59,6 +60,6 @@ export const CURRENT_LOCATION: {
 export const MAP_CONFIG = {
   center: [77.5484, -6.1987] as [number, number],
   zoom: 2,
-  maxZoom: 7,
+  maxZoom: 5,
   minZoom: 2
 };
