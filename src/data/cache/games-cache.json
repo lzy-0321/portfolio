@@ -15,8 +15,8 @@
       "link": "https://store.steampowered.com/app/1172470",
       "rating": {
         "summary": "Mixed",
-        "total": 970819,
-        "positive": 656236,
+        "total": 970828,
+        "positive": 656238,
         "percentage": 68
       }
     },
@@ -33,8 +33,8 @@
       "link": "https://store.steampowered.com/app/359550",
       "rating": {
         "summary": "Very Positive",
-        "total": 1343708,
-        "positive": 1135010,
+        "total": 1343747,
+        "positive": 1135033,
         "percentage": 84
       }
     },
@@ -52,8 +52,8 @@
       "link": "https://store.steampowered.com/app/271590",
       "rating": {
         "summary": "Very Positive",
-        "total": 1920150,
-        "positive": 1672630,
+        "total": 1920206,
+        "positive": 1672681,
         "percentage": 87
       }
     },
@@ -72,8 +72,8 @@
       "link": "https://store.steampowered.com/app/2358720",
       "rating": {
         "summary": "Overwhelmingly Positive",
-        "total": 1066073,
-        "positive": 1029319,
+        "total": 1066200,
+        "positive": 1029442,
         "percentage": 97
       }
     },
@@ -93,8 +93,8 @@
       "link": "https://store.steampowered.com/app/1366540",
       "rating": {
         "summary": "Overwhelmingly Positive",
-        "total": 82894,
-        "positive": 80968,
+        "total": 82896,
+        "positive": 80970,
         "percentage": 98
       }
     },
@@ -114,8 +114,8 @@
       "link": "https://store.steampowered.com/app/105600",
       "rating": {
         "summary": "Overwhelmingly Positive",
-        "total": 1356597,
-        "positive": 1322884,
+        "total": 1356658,
+        "positive": 1322941,
         "percentage": 98
       }
     },
@@ -132,8 +132,8 @@
       "link": "https://store.steampowered.com/app/1091500",
       "rating": {
         "summary": "Very Positive",
-        "total": 786356,
-        "positive": 659905,
+        "total": 786410,
+        "positive": 659961,
         "percentage": 84
       }
     },
@@ -151,8 +151,8 @@
       "link": "https://store.steampowered.com/app/255710",
       "rating": {
         "summary": "Very Positive",
-        "total": 265957,
-        "positive": 248126,
+        "total": 265964,
+        "positive": 248132,
         "percentage": 93
       }
     },
@@ -170,11 +170,11 @@
       "link": "https://store.steampowered.com/app/394360",
       "rating": {
         "summary": "Very Positive",
-        "total": 317599,
-        "positive": 289179,
+        "total": 317615,
+        "positive": 289193,
         "percentage": 91
       }
     }
   ],
-  "lastUpdate": 1734758440669
+  "lastUpdate": 1734764996785
 }

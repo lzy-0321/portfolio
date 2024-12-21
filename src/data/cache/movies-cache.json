@@ -88,7 +88,7 @@
         "Movie"
       ],
       "year": "2010",
-      "rating": 8.369,
+      "rating": 8.4,
       "link": "https://www.themoviedb.org/movie/27205"
     },
     {
@@ -196,5 +196,5 @@
       "link": "https://www.themoviedb.org/tv/73586"
     }
   ],
-  "lastUpdate": 1734758441377
+  "lastUpdate": 1734764997334
 }
