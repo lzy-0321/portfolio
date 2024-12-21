@@ -240,8 +240,9 @@ courses: [
     name: "Computer Architecture", // Course name
     university: "University of new south wales",
     description: "Course description...",
-    type: ["Systems", "Hardware"], // Course categories
-    link: "https://github.com/..." // Optional GitHub link
+    type: ["Systems", "Hardware"] as CourseType[], // Course categories
+    link: "https://github.com/...", // Optional GitHub link
+    handbookUrl: "https://..." // Course handbook link
   }
 ]
 ```
