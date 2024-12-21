@@ -26,7 +26,7 @@ export const DATA = {
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/projects", icon: CodeIcon, label: "Projects" },
     { href: "/notes", icon: BookOpenIcon, label: "Notes" },
-    { href: "/blog", icon: NotebookIcon, label: "Blog" },
+    // { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
     email: "luziyao020321@gmail.com",

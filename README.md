@@ -87,7 +87,7 @@ src/
 ```bash
 git clone https://github.com/lzy-0321/portfolio
 cd portfolio
-pnpm install
+npm install
 ```
 
 2. Configure environment:
@@ -97,7 +97,7 @@ pnpm install
 
 3. Start development:
 ```bash
-pnpm dev
+npm run dev
 ```
 
 # Configuration Guide

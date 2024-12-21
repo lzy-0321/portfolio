@@ -83,7 +83,7 @@ export default async function Page() {
   // 获取游戏数据
   const cachedGames = getCachedGames();
   const now = Date.now();
-  
+
   let steamGames = cachedGames?.data || [];
   if (steamGames.length === 0 || (now - cachedGames.lastUpdate) > CACHE_EXPIRY) {
     console.log('Cache expired or empty, fetching new data...');
@@ -153,7 +153,7 @@ export default async function Page() {
               </Markdown>
             </BlurFade>
           </section>
-          
+
           <section id="gallery" className="w-full">
             <Gallery images={galleryImages} delay={BLUR_FADE_DELAY * 4.5} />
           </section>
@@ -301,10 +301,10 @@ export default async function Page() {
                     Travel
                   </div>
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                    Places I've Been
+                    Places I&apos;ve Been
                   </h2>
                   <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    Exploring the world, one city at a time.
+                    Exploring the world.
                   </p>
                 </div>
               </div>
