@@ -17,6 +17,12 @@ Original features:
 - Optimized for Next.js and Vercel
 
 Added features and modifications:
+- 📸 Projects Showcase:
+  - Dedicated projects page with detailed descriptions
+  - Latest projects preview on homepage
+  - Project categorization with tech stack tags
+  - Direct links to GitHub repositories
+  - Animated transitions and hover effects
 - 📸 Course Notes Integration:
   - Organized course catalog with descriptions
   - Course type categorization with colored tags
@@ -57,6 +63,8 @@ src/
 │   └── magicui/                # Animation components
 ├── app/
 │   ├── page.tsx                # Main layout
+│   ├── projects/               # Projects section
+│   │   └── page.tsx           # Projects showcase page
 │   └── notes/                  # Notes section
 │       └── page.tsx            # Course catalog page
 ├── data/
